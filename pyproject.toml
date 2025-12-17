@@ -1,0 +1,9 @@
+[tool.ruff]
+line-length = 88
+exclude = ["venv", ".venv", "__pycache__"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "C90"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

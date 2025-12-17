@@ -1,0 +1,10 @@
+services:
+  qdrant_ai_ta:
+    image: qdrant/qdrant:latest
+    container_name: qdrant_ai_ta
+    ports:
+      - "6335:6333"  # REST API (new host port)
+      - "6336:6334"  # gRPC (new host port)
+    volumes:
+      - ./data/qdrant:/qdrant/storage
+    restart: unless-stopped
