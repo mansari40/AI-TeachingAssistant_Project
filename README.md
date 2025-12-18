@@ -98,11 +98,11 @@ Students validate understanding using built-in practice tools.
 
 AI-TA is best used as a learning and revision aid:
 
-*Ask one focused question at a time*
-*Review supporting sources*
-*Practice recall using self-check tools*
-*Refine questions or broaden context when needed*
-*It is not intended to replace coursework, lectures, or independent study.*
+- *Ask one focused question at a time*
+- *Review supporting sources*
+- *Practice recall using self-check tools*
+- *Refine questions or broaden context when needed*
+- *It is not intended to replace coursework, lectures, or independent study.*
 
 ---
 
