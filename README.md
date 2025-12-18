@@ -7,7 +7,7 @@
 ## Overview
 
 **AI-TA for Data Science Students** is a study-focused AI teaching assistant designed for **Bachelor’s and Master’s level** learners in data science.  
-It supports students when learning challenging topics—such as **statistics**, **machine learning**, **data preprocessing**, and **model interpretation** by providing clear explanations grounded in **trusted educational resources**, followed by tools that encourage **active learning**.
+It supports students when learning challenging topics such as **statistics**, **machine learning**, **data preprocessing**, and **model interpretation** by providing clear explanations grounded in **trusted educational resources**, followed by tools that encourage **active learning**.
 
 Rather than replacing textbooks or coursework, AI-TA acts as a **guided academic companion**:  
 students ask a focused question, review the supporting references used, and then reinforce understanding through structured practice.
@@ -91,16 +91,12 @@ The assistant is grounded in a compact, high-quality set of commonly used learni
 
 **Ingestion:**
 Educational PDFs are extracted and cleaned for indexing.
-
 **Chunking & Indexing:**
 Content is split into overlapping chunks and embedded for semantic search.
-
 **Retrieval:**
 Relevant passages are selected based on similarity to the question.
-
 **Answer Generation:**
 The assistant produces a response strictly grounded in retrieved material.
-
 **Learning Reinforcement:**
 Students validate understanding using built-in practice tools.
 
