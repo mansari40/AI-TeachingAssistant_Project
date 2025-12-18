@@ -63,17 +63,22 @@ class Settings(BaseSettings):
     def load(cls, config_path: Path | str = "config.yaml") -> "Settings":
         path = Path(config_path)
 
+        # Choose a stable root:
+        # - if config.yaml exists => resolve relative paths relative to its folder
+        # - else => fall back to current working directory
+        root = path.parent.resolve() if path.exists() else Path.cwd().resolve()
+
         if not path.exists():
-            return cls()
+            return cls().resolve_paths(root)
 
         text = path.read_text(encoding="utf-8").strip()
         if not text:
-            return cls()
+            return cls().resolve_paths(root)
 
         raw: dict[str, Any] = yaml.safe_load(text) or {}
         cfg = YamlCfg(**raw)
 
-        return cls(
+        settings = cls(
             pdf_dir=cfg.data.pdf_dir,
             artifacts_dir=cfg.data.artifacts_dir,
             chunk_chars=cfg.indexing.chunk_chars,
@@ -85,9 +90,10 @@ class Settings(BaseSettings):
             chat_model=cfg.models.chat_model,
             embedding_dim=cfg.models.embedding_dim,
         )
+        return settings.resolve_paths(root)
 
     def resolve_paths(self, project_root: Optional[Path] = None) -> "Settings":
-        root = project_root or Path.cwd()
+        root = (project_root or Path.cwd()).resolve()
 
         if not self.pdf_dir.is_absolute():
             self.pdf_dir = (root / self.pdf_dir).resolve()

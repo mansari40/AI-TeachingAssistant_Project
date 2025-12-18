@@ -12,16 +12,16 @@ def retrieve(
     query: str,
     *,
     top_k: Optional[int] = None,
-    source: Optional[str] = None,
+    source: Optional[str] = "pdf",
 ) -> List[Citation]:
     cfg = Settings.load()
 
-    k = top_k or cfg.top_k
-    llm = OpenAIClient(cfg)
-    client = get_client(cfg)
+    k = int(top_k or cfg.top_k)
 
+    llm = OpenAIClient(cfg)
     embedding = llm.embed_texts([query])[0]
 
+    client = get_client(cfg)
     rows = search(
         client,
         cfg.qdrant_collection,
@@ -32,16 +32,23 @@ def retrieve(
 
     citations: List[Citation] = []
     for score, payload in rows:
-        if score < cfg.min_score:
+        if score is not None and score < cfg.min_score:
             continue
+
+        ref = (
+            payload.get("title")
+            or payload.get("filename")
+            or payload.get("doc_id")
+            or "Unknown source"
+        )
 
         citations.append(
             Citation(
-                source=payload.get("source"),
-                reference=payload.get("doc_id"),
-                chunk_id=payload.get("chunk_id"),
-                quote=payload.get("text"),
-                score=score,
+                source=str(payload.get("source") or "pdf"),
+                reference=str(ref),
+                chunk_id=str(payload.get("chunk_id") or ""),
+                quote=str(payload.get("text") or ""),
+                score=float(score) if score is not None else None,
             )
         )
 
