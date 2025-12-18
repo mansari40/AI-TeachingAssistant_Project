@@ -89,15 +89,19 @@ The assistant is grounded in a compact, high-quality set of commonly used learni
 
 ## How It Works
 
-**Ingestion:**
+- **Ingestion:**
 Educational PDFs are extracted and cleaned for indexing.
-**Chunking & Indexing:**
+
+- **Chunking & Indexing:**
 Content is split into overlapping chunks and embedded for semantic search.
-**Retrieval:**
+
+- **Retrieval:**
 Relevant passages are selected based on similarity to the question.
-**Answer Generation:**
+
+- **Answer Generation:**
 The assistant produces a response strictly grounded in retrieved material.
-**Learning Reinforcement:**
+
+- **Learning Reinforcement:**
 Students validate understanding using built-in practice tools.
 
 ---
