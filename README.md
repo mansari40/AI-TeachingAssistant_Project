@@ -61,6 +61,18 @@ AI-TA addresses these challenges by delivering **structured, transparent, and re
 
 ---
 
+## Technical Architecture
+
+AI-TA follows a modular, retrieval-based learning architecture:
+
+- Vector database: A semantic vector store (Qdrant) is used to index and retrieve relevant textbook passages efficiently.
+- Language models: Large language models are used for both semantic embedding of text and context-aware answer generation.
+- Strict grounding: All generated responses are constrained to retrieved material to ensure reliability and transparency.
+- Web interface: An interactive Streamlit application enables conversational learning, evidence inspection, and practice generation.
+- This design allows developers to extend the knowledge base, swap models, or adjust retrieval strategies with minimal changes.
+
+---
+
 ## Curated Reference Library
 
 The assistant is grounded in a compact, high-quality set of commonly used learning resources:
